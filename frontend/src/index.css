@@ -18,60 +18,43 @@ html, body, #root {
   background: #0f172a;
 }
 
-/* === RESPONSIVE DESIGN FOR MOBILE & TABLETS === */
+/* === RESPONSIVE DESIGN UNIVERSAL FOR #root === */
 @media (max-width: 900px) {
   html, body, #root {
     height: auto !important;
     min-height: 100vh !important;
+    width: 100% !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
   }
 
-  /* Apilar los 3 paneles en una sola columna vertical */
-  .app-container,
-  .dashboard-layout,
-  .main-grid {
+  /* Apilar los 3 paneles principales que cuelgan de #root */
+  #root > div {
     display: flex !important;
     flex-direction: column !important;
+    width: 100% !important;
     height: auto !important;
     overflow: visible !important;
   }
 
-  /* Panel izquierdo (buscador y lista) y panel derecho (métricas NASA) */
-  .sidebar-left,
-  .sidebar-right,
-  aside {
+  /* Hacer que cada columna (izquierda, mapa y derecha) ocupe 100% de ancho */
+  #root > div > div,
+  #root > div > aside,
+  #root > div > main,
+  #root > div > section {
     width: 100% !important;
+    min-width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
     max-height: none !important;
-    overflow: visible !important;
+    border-right: none !important;
+    border-left: none !important;
   }
 
-  /* Limitar altura de la lista de 343 municipios en móvil para no hacer scroll infinito */
-  .municipios-list,
-  .municipality-list {
-    max-height: 260px !important;
-    overflow-y: auto !important;
-  }
-
-  /* Mapa central visible y cómodo para tocar con el dedo */
-  .map-wrapper,
-  .map-container,
+  /* Darle altura fija cómoda al contenedor del mapa Leaflet */
   .leaflet-container {
     width: 100% !important;
-    min-height: 400px !important;
     height: 420px !important;
-    order: -1; /* Opcional: pone el mapa arriba del todo en celular */
-  }
-
-  /* Ajustar botones flotantes sobre el mapa para que no se encimen */
-  .map-controls,
-  .floating-controls {
-    top: 10px !important;
-    left: 52px !important;
-    right: 10px !important;
-    flex-wrap: wrap !important;
-    gap: 6px !important;
+    min-height: 420px !important;
   }
 }
